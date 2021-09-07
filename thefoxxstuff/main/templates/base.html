@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="topnav">
+            <a href="#" class="logo"><img height="18px" src="{% static 'img/THEFOXXSTUFF.svg' %}"></a>
+            <a id="active" href="#">Главная</a>
+            <a href="#">Новости</a>
+            <a href="#">Игры</a>
+            <a href="#">Музыка</a>
+        </div>
+    </div>
+<div class="container">
+  <div class="px20"></div>
+  <div class="banner">
+      <img width="1300px" height="200px" src="{% static '/img/banner.jpg' %}">
+      <div class="banner-name">
+      </div>
+  </div>
+  <div class="px20"></div>
+  <div class="right-box">
+      <div class="right-menu-b">
+          <i class="fa fa-list" aria-hidden="true"></i>&#160;Разделы
+      </div>
+  <!-- GAMES -->
+      <div class="categories">
+      <a href="">
+          <div class="categorie" id="games">
+              <div class="categorie-border">
+                  <v>Games</v>
+              </div>  
+          </div>
+      </a>
+      </div>
+  <!-- DESIGN -->
+      <div class="categories">
+      <a href="">
+          <div class="categorie" id="design">
+              <div class="categorie-border">
+                  <v>Design</v>
+              </div>  
+          </div>
+      </a>
+      </div>
+  </div>
+  <div class="left-box">
+      <div class="left-box-head">
+          <div class="left-box-head-name">
+              Figma design
+          </div>
+          <div class="box">
+
+            {% block content %}{% endblock content %}
+
+      </div>
+
+</div>
+</body>

@@ -1,34 +1,14 @@
+from django.db import models
 from django.shortcuts import render, redirect
-from .models import Task
-from .forms import TaskForm
+from .models import Post
+from django.views import generic
 
 
-def index(request):
-    return render(request, 'main/index.html')
-
-
-def about(request):
-    return render(request, 'main/about.html')
-
-
-def tasks(request):
-    tasks = Task.objects.order_by('-id')[:5]
-    return render(request, 'main/tasks.html', {'tasks':tasks})
-
-
-def create(request):
-    error = ''
-    if request.method == "POST":
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('tasks')
-        else:
-            error = 'Форма говно'
-
-    form = TaskForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'main/create.html', context)
+class PostList(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'index.html'
     
+
+class DetailView(generic.DetailView):
+    model = Post
+    template_name = 'post_detail.html'

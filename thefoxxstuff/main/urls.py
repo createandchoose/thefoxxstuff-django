@@ -1,10 +1,8 @@
 from django.urls import path
-from . import views
-
+from .import views
+from django.conf import settings
 
 urlpatterns = [
-    path('', views.index, name='home'),
-    path('about', views.about, name='about'),
-    path('create', views.create, name='create'),
-    path('tasks', views.tasks, name='tasks'),
+    path('', views.PostList.as_view(), name="stuff"),
+    path('<slug:slug>/', views.DetailView.as_view(), name="post_detail"),
 ]

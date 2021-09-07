@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% for post in post_list %}
+<div class="card">
+    <div class="card-image>">
+    <article class="news">
+    <div class="poster">
+    <img id="posterimg" width="300" height="180" src="./img/art.png">
+    </div>
+    <div class="infoboxy">
+    <div class="mainname"><a href="post.html">{{ post.title }}</a></div>
+    <p>
+      {{ post.content|slice:":200" }}
+    </p>
+    <a href="#" class="btn" id="lil">
+    <div class="button">
+        MORE
+    </div>
+    </a>
+    <div class="meta">
+    <div class="infodata">{{ post.created_on }}</div>
+    <div class="tag">Tag:</div>
+    <div class="tag-name"><a href="#post.html">{{ post.author }}</a></div>
+    </div>
+    </div>
+    </article>
+    </div>
+</div>
+{% endfor %}
+
+{%endblock%}
+
+
